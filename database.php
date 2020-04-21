@@ -29,6 +29,11 @@ class Database
     public function query($q)
     {
         $this->result = $this->curser->query($q);
+        
+        if(isset($this->curser->error) && !empty($this->curser->error)){
+            throw new Exception($this->curser->error);
+        }
+        
         $this->close();
     }
 
@@ -52,5 +57,16 @@ class Database
         }else{
             throw new Exception("Querry failed. Error: $e", 1);
         }
+    }
+    
+    public function insert($q)
+    {
+        $r = $this->curser->query($q);
+
+        if(isset($this->curser->error) && !empty($this->curser->error)){
+            throw new Exception($this->curser->error);
+        }
+
+        return $r;
     }
 }
