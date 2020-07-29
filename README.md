@@ -1,2 +1,2 @@
 # EDC - Everyday Code
-Optimized &amp; reusable classes
+Optimized &amp; reusable Code
